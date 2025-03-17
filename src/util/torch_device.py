@@ -12,3 +12,7 @@ def __resolve_torch_device_str() -> str:
         return "cuda"
     else:
         return "cpu"
+
+
+def to_numpy(tensor: torch.Tensor):
+    return tensor.cpu().detach().numpy()
