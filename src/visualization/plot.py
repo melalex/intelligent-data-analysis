@@ -83,10 +83,21 @@ def plot_images(x):
     plt.show()
 
 
+def plot_tensor_images(x):
+    for i in range(len(x)):
+        plt.subplot(330 + 1 + i)
+        plt.imshow(x[i].permute(1, 2, 0).cpu().detach().numpy())
+    plt.show()
+
+
 def plot_tensors(x):
     tensors = [torch.reshape(it, (28, 28)) for it in x]
     plot_images(tensors)
 
 
 def sample_random_images(x):
+    return [x[np.random.randint(0, len(x))] for _ in range(9)]
+
+
+def sample_random_images_ds(x):
     return [x[np.random.randint(0, len(x))] for _ in range(9)]
